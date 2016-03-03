@@ -1,3 +1,9 @@
+/**
+* Title:            990 - Diving for Gold
+* Author:           Victor Cueva Llanos
+* Email:            Ingvcueva@gmail.com
+**/
+
 #include <bits/stdc++.h>
 #define MOD 1000000007
 #define MAXN 1005

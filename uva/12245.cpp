@@ -1,3 +1,9 @@
+/**
+* Title:            12245 - Hyperactive Girl
+* Author:           Victor Cueva Llanos
+* Email:            Ingvcueva@gmail.com
+**/
+
 #include <bits/stdc++.h>
 #define MOD 100000000
 #define MAXN 106
