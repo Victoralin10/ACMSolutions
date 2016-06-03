@@ -1,5 +1,5 @@
 /**
-* Title:            (program's title)
+* Title:            B. Pyramid of Glasses
 * Author:           Victor Cueva Llanos
 * Email:            Ingvcueva@gmail.com
 **/

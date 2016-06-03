@@ -1,5 +1,5 @@
 /**
-* Title:            (program's title)
+* Title:            A. Nicholas and Permutation
 * Author:           Victor Cueva Llanos
 * Email:            Ingvcueva@gmail.com
 **/

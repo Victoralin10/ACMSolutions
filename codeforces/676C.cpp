@@ -1,5 +1,5 @@
 /**
-* Title:            (program's title)
+* Title:            C. Vasya and String
 * Author:           Victor Cueva Llanos
 * Email:            Ingvcueva@gmail.com
 **/
