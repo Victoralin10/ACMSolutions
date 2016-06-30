@@ -1,5 +1,5 @@
 /**
-* Title:            (Orthography)
+* Title:            Orthography
 * Author:           Victor Cueva Llanos
 * Email:            Ingvcueva@gmail.com
 **/
@@ -20,7 +20,7 @@ int compare(string &a, string &b) {
 
 int main(int nargs, char **args) {
     // clock_t _inicio = clock();
-    
+
     int n;
     vector <string> words;
 

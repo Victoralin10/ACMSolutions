@@ -1,5 +1,5 @@
 /**
-* Title:            Voice Alerts
+* Title:            Easy GCD
 * Author:           Victor Cueva Llanos
 * Email:            Ingvcueva@gmail.com
 **/
@@ -13,26 +13,25 @@ using namespace std;
 
 int main(int nargs, char **args) {
     // clock_t _inicio = clock();
+    
+    int n, k;
+    cin >> n >> k;
 
-    double V, T;
-    int n;
+    int gcd = 0;
+    for (int i = 0, x; i < n; i++) {
+        cin >> x;
+        gcd = __gcd(gcd, x);
+    }
 
-    cin >> V >> T;
-    cin >> n;
-
-    int ians;
-    double dans = (1LL<<50);
-    for (int i = 1; i<= n; i++) {
-        double x, t;
-        cin >> x >> t;
-        if (x + V*(T + t) < dans) {
-            dans = x + V*(T + t);
-            ians = i;
+    int div = gcd;
+    for (int i = 2; i*i <= gcd; i++) {
+        if (gcd%i == 0) {
+            div = i;
+            break;
         }
     }
 
-    printf("%.5f %d\n", dans, ians);
-
+    cout << div*(k/div) << endl;
 
     // printf("Time elapsed: %ld ms\n", (clock() - _inicio)/1000);
     return 0;

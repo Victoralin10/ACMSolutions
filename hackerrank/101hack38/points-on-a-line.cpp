@@ -1,5 +1,5 @@
 /**
-* Title:            Voice Alerts
+* Title:            Points On a Line
 * Author:           Victor Cueva Llanos
 * Email:            Ingvcueva@gmail.com
 **/
@@ -13,26 +13,20 @@ using namespace std;
 
 int main(int nargs, char **args) {
     // clock_t _inicio = clock();
-
-    double V, T;
+    
     int n;
-
-    cin >> V >> T;
     cin >> n;
 
-    int ians;
-    double dans = (1LL<<50);
-    for (int i = 1; i<= n; i++) {
-        double x, t;
-        cin >> x >> t;
-        if (x + V*(T + t) < dans) {
-            dans = x + V*(T + t);
-            ians = i;
-        }
+    set <int> st1, st2;
+
+    while (n--) {
+        int x, y;
+        cin >> x >> y;
+        st1.insert(x);
+        st2.insert(y);
     }
 
-    printf("%.5f %d\n", dans, ians);
-
+    puts(st1.size()==1||st2.size()==1?"YES":"NO");
 
     // printf("Time elapsed: %ld ms\n", (clock() - _inicio)/1000);
     return 0;

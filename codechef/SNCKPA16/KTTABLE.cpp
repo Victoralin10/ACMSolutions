@@ -10,7 +10,6 @@
 
 using namespace std;
 
-
 int main(int nargs, char **args) {
     // clock_t _inicio = clock();
     int t;
