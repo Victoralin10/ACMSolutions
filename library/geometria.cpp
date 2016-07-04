@@ -1,16 +1,22 @@
 
+#define _TYPE double
+#define EPS 1e-9
+const _TYPE PI = acos(-1.0);
+
 struct Point {
-    double x, y;
+    _TYPE x, y;
     Point(){}
-    Point(double x, double y):x(x), y(y){}
+    Point(_TYPE x, _TYPE y):x(x), y(y){}
 
     Point ort() { return Point(-y, x); }
-    double mod2() { return x*x + y*y; }
-    double mod() { return sqrt(mod2()); }
-
+    _TYPE mod2() { return x*x + y*y; }
+    _TYPE mod() { return sqrt(mod2()); }
     Point unit() {
-        double md = mod();
+        _TYPE md = mod();
         return Point(x/md, y/md);
+    }
+    _TYPE ang() {
+        return atan2(y, x);
     }
 };
 
@@ -22,39 +28,60 @@ Point operator- (const Point &a, const Point &b) {
     return Point(a.x - b.x, a.y - b.y);
 }
 
-double operator* (const Point &a, const Point &b) {
+_TYPE operator* (const Point &a, const Point &b) {
     return a.x*b.x + a.y*b.y;
 }
 
-Point operator* (const Point &a, double k) {
+Point operator* (const Point &a, _TYPE k) {
     return Point(a.x*k, a.y*k);
 }
 
-Point operator* (double k, const Point &a) {
+Point operator* (_TYPE k, const Point &a) {
     return Point(a.x*k, a.y*k);
 }
 
-bool inInterval(const Point &a, const Point &b, const Point &c) {
+Point operator/ (const Point &a, _TYPE k) {
+    return Point(a.x/k, a.y/k);
+}
+
+// Is Point c in segment ab?
+bool inSegment(const Point &a, const Point &b, const Point &c) {
     return ((a - b)*(c - a).ort() == 0) && ((c - a)*(c - b) <= 0);
 }
 
-Point proyeccion(const Point &a, const Point &b, const Point &c) {
+// Point c projection on line passing through a, b.
+Point projection(const Point &a, const Point &b, const Point &c) {
     Point u = b - a;
     return a + (((c - a)*u)/(u*u))*u;
 }
 
-double distance(const Point &a, const Point &b, const Point &c) {
-    Point p = proyeccion(a, b, c);
-    if (inInterval(a, b, p)) {
+// Point c distance to segment ab
+_TYPE distance(const Point &a, const Point &b, const Point &c) {
+    Point p = projection(a, b, c);
+    if (inSegment(a, b, p)) {
         return (c - p).mod();
     }
 
     return min((c - a).mod(), (c - b).mod());
 }
 
-Point interseccion(const Point &a, const Point &b, const Point &c,
+// Intersection of lines passing through ab and cd
+Point intersection(const Point &a, const Point &b, const Point &c,
     const Point &d) {
 
     Point u1 = (b - a), u2 = (d - c);
     return a + (((c - a)*u2.ort())/(u1*u2.ort()))*u1;
+}
+
+// Angle of ւabc
+_TYPE angle(const Point &b, const Point &a, const Point &c) {
+    _TYPE a1 = (a - b).ang(), a2 = (c - b).ang();
+    if (a1 < 0) {
+        a1 += 2*PI;
+    }
+    if (a2 < 0) {
+        a2 += 2*PI;
+    }
+
+    return a1 - a2;
 }
