@@ -71,8 +71,7 @@ int main() {
   cin>>n;
   REP(i, n) {
     cin>>x;
-    pnd mnd = new Nd(x, random());
-    insert(mtreap, mnd);
+    insert(mtreap, new Nd(x, random()));
   }
   vector<tnd> a;
   to_vector(mtreap, a);
