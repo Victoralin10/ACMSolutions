@@ -2,6 +2,7 @@
 #define N 501
 
 int phi[N];
+
 void phi() {
     for(int i = 1;i < N;i++) {
         phi[i] = i;

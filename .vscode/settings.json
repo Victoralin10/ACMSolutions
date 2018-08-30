@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*cpp*cppostream": "cpp",
+        "valarray": "cpp",
+        "chrono": "cpp",
+        "random": "cpp",
+        "limits": "cpp"
+    }
+}
