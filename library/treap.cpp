@@ -49,7 +49,7 @@ void insert(pnd &t, pnd nnd) {
 void merge(pnd &t, pnd l, pnd r) {
   if (!l) t=r;
   else if (!r) t = l;
-  else if (l->pri>r->pri) merge(l->r, l->r, r), t=l;
+  else if (l->pri > r->pri) merge(l->r, l->r, r), t=l;
   else merge(r->l, l, r->l), t=r;
 }
 
@@ -59,6 +59,18 @@ void erase(pnd &t, tnd key) {
   else erase(key<t->key?t->l:t->r, key);
 }
 
+pnd unite(pnd a, pnd b) {
+    if (!a) return b;
+    if (!b) return a;
+    if (a->pri > b->pri) swap(a, b);
+
+    pnd al, ar;
+    split(a, b->key, al, ar);
+    b->l = unite(b->l, al);
+    b->r = unite(b->r, ar);
+    return b;
+}
+
 void to_vector(pnd t, vector<tnd> &a) {
   if (!t) return;
   to_vector(t->l, a);
@@ -66,19 +78,23 @@ void to_vector(pnd t, vector<tnd> &a) {
   to_vector(t->r, a);
 }
 
-int main() {
-  pnd mtreap=NULL;
-  int n, x;
-  cin>>n;
+pnd load_treap() {
+    int n, x;
+    cin >> n;
+    pnd ans=NULL;
+    while (n--) {
+        cin>>x;
+        insert(ans, new Nd(x, random()));
+    }
+    return ans;
+}
 
-  REP(i, n) {
-    cin>>x;
-    insert(mtreap, new Nd(x, random()));
-	
-  }
+int main() {
+    pnd t1 = load_treap(), t2 = load_treap();
+    pnd t = unite(t1, t2);
 
   vector<tnd> a;
-  to_vector(mtreap, a);
-  REP(i, n) cout<<a[i]<<" ";
+  to_vector(t, a);
+  REP(i, SZ(a)) cout<<a[i]<<" ";
   cout<<endl;
 }

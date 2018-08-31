@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+
+#define REP(i, n) for(int i = 0; i < n; i++)
+#define FOR(i, a, b) for (int i = a; i < b; i++)
+#define CLR(t, value) memset(t, value, sizeof(t))
+#define ALL(v) v.begin(), v.end()
+#define SZ(v) ((int)(v).size())
+#define TEST(x) cerr << "test " << #x << " " << x << endl;
+#define sc(x) scanf("%d", &x)
+
+using namespace std;
+
+typedef long long Long;
+typedef vector<int> vInt;
+typedef pair<int,int> Pair;
+
+const int N = 1e5 + 2;
+const int INF = 1e9 + 7;
+const int MOD = 1e9 + 7;
+const double EPS = 1e-8;
+
+/************************************/
+
+int main() {
+    int n, h, a, b, q;
+    cin>>n>>h>>a>>b>>q;
+    while (q--) {
+        int ta, fa, tb, fb;
+        cin>>ta>>fa>>tb>>fb;
+        if (ta>tb) swap(ta,tb), swap(fa, fb);
+        int ans = 0;
+        if (ta==tb) {
+            ans=abs(fa-fb);
+        } else {
+            ans=tb-ta;
+            if (fa>b && fb>b) ans += fa+fb-2*b;
+            else if (fa<a&&fb<a) ans += 2*a-fa-fb;
+            else ans += abs(fa-fb);
+        }
+        cout<<ans<<endl;
+    }
+    return 0 ;
+}
