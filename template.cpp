@@ -19,9 +19,16 @@ const int INF = 1e9 + 7;
 const int MOD = 1e9 + 7;
 const double EPS = 1e-8;
 
+void fast_io() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+
 /************************************/
 
 int main() {
+    fast_io();
 
     return 0 ;
 }
